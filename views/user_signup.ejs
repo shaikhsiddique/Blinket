@@ -1,0 +1,62 @@
+<%- include('./partials/header'); %>
+
+<body class="h-screen w-screen flex items-center justify-center bg-gray-100">
+
+    <div class="relative h-full w-full">
+        <!-- Full-screen Image -->
+        <img src="/images/background.jpg" alt="Background Image" class="object-cover w-full h-full">
+
+        <!-- Signup Form and Google Auth Button -->
+        <div class="absolute top-50 inset-0 flex flex-col justify-center items-center">
+            <% if (messages.error) { %>
+                <div class="mb-6 px-4 py-2 bg-red-600 text-white rounded-lg shadow-md">
+                    <%= messages.error %>
+                </div>
+            <% } %>
+            <!-- Signup Form -->
+            <div class="bg-gray-200 border-2 bg-opacity-50 p-8 rounded-lg shadow-lg max-w-sm w-full mb-6">
+                <h2 class="text-center text-2xl font-bold mb-4 text-black">Sign Up</h2>
+                <form action="/auth/signup" method="POST">
+                    <div class="mb-3"> <!-- Reduced margin-bottom from mb-4 -->
+                        <label for="name" class="block text-sm font-medium text-black">Name</label>
+                        <input type="text" name="name" id="name" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white bg-opacity-70">
+                    </div>
+                    <div class="mb-3"> <!-- Reduced margin-bottom from mb-4 -->
+                        <label for="email" class="block text-sm font-medium text-black">Email</label>
+                        <input type="email" name="email" id="email" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white bg-opacity-70">
+                    </div>
+                    <div class="mb-3"> <!-- Reduced margin-bottom from mb-4 -->
+                        <label for="phone" class="block text-sm font-medium text-black">Phone</label>
+                        <input type="tel" name="phone" id="phone" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white bg-opacity-70">
+                    </div>
+                    <div class="mb-4"> <!-- Reduced margin-bottom from mb-6 -->
+                        <label for="password" class="block text-sm font-medium text-black">Password</label>
+                        <input type="password" name="password" id="password" required
+                            class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-white bg-opacity-70">
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit"
+                            class="bg-indigo-600 bg-opacity-80 text-white font-semibold py-2 px-4 rounded-lg hover:bg-indigo-700 transition duration-300">
+                            Sign Up
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Button at the Bottom for Google Auth -->
+            <div class="w-full flex justify-center mb-8">
+                <a href="/auth/google"
+                    class="bg-black bg-opacity-80 text-white font-semibold py-3 px-6 rounded-lg hover:bg-black transition duration-300">
+                    Continue with Google
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<%- include('./partials/footer'); %>
